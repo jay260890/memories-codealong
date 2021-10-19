@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+      js-cookie is a library that allows for a simpler way
+      of working with cookies with Cookies.getJSON(),
+      Cookies.set() and Cookies.remove()
+
+      The alternative is to use the document.cookie API,
+      which is very cumbersome and complicated:
+
+      https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+    -->
+    <script src="https://unpkg.com/js-cookie@2.2.1/src/js.cookie.js"></script>
+  </head>
+
+  <body>
+    <button onclick="createCookie()">Create cookie</button>
+
+    <br />
+
+    <button onclick="deleteCookie()">Delete cookie</button>
+
+    <br />
+    <br />
+
+    Cookie value:
+    <pre
+      style="border: 1px solid #ddd; border-radius: 4px; padding: 10px"
+    ></pre>
+
+    <script>
+      const guestList = [
+        {
+          id: 1,
+          name: 'Pascal',
+          deadline: null,
+          status: 'attending',
+        },
+        {
+          id: 2,
+          name: 'Lena',
+          deadline: null,
+          status: 'not attending',
+        },
+        {
+          id: 3,
+          name: 'Julian',
+          deadline: '2021-10-21',
+          status: 'unknown',
+        },
+      ];
+
+      function createCookie() {
+        Cookies.set('guestlist', JSON.stringify(guestList));
+        showCookieValue();
+        alert('🚀 Cookie has been created!');
+      }
+
+      function deleteCookie() {
+        Cookies.remove('guestlist');
+        showCookieValue();
+        alert('💣 Cookie has been deleted!');
+      }
+
+      function showCookieValue() {
+        const cookieValue = Cookies.getJSON('guestlist');
+        document.querySelector('pre').innerText = JSON.stringify(
+          cookieValue,
+          null,
+          2,
+        );
+      }
+
+      showCookieValue();
+    </script>
+  </body>
+</html>
