@@ -28,3 +28,9 @@ VALUES
   (1, 'Memories', 'Data, Data Persistence, Cookies, Local Storage, Databases', 1);
 
 SELECT * FROM lectures;
+
+--1. SELECT * from guests
+--2. SELECT * from guests WHERE id = 1
+--3. SELECT name from guests WHERE id = 2
+--4. SELECT * from guests WHERE attending_status_id = 2
+--5. SELECT * from guests, attending_statuses
